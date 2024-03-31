@@ -1,0 +1,23 @@
+def generate_budgeting_response(income, expenses, financial_goals):
+    # Calculate remaining funds after expenses
+    remaining_funds = income - sum(expenses.values())
+    
+    # Calculate total amount needed for financial goals
+    total_goals_amount = sum(financial_goals.values())
+    
+    # Determine if Bob has enough funds for his financial goals
+    if remaining_funds >= total_goals_amount:
+        advice = "You have enough funds to achieve your financial goals!"
+    else:
+        shortfall = total_goals_amount - remaining_funds
+        advice = f"It seems you're short by ${shortfall:.2f} to achieve all your financial goals. You may need to reassess your expenses or consider increasing your income."
+    
+    return advice
+
+# Example usage:
+income = 5000  # Bob's monthly gross income
+expenses = {'rent': 1500, 'utilities': 200, 'groceries': 300, 'transportation': 200}
+financial_goals = {'emergency_savings': 1000, 'investments': 500}
+
+response = generate_budgeting_response(income, expenses, financial_goals)
+print(response)
